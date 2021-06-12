@@ -1,0 +1,27 @@
+{
+  "name": "TeamProfile-Generator",
+  "version": "1.0.0",
+  "description": "For this weeks homework we will be building a Node.js application that takes in information about employees to help keep info about employees on a software team. After taking information, a HTML should be generated that displays summaries for each person on the team.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarissaNancy/TeamProfile-Generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarissaNancy/TeamProfile-Generator/issues"
+  },
+  "homepage": "https://github.com/MarissaNancy/TeamProfile-Generator#readme"
+}
