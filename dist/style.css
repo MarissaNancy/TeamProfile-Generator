@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+header {
+    padding: 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: rgb(101, 70, 129);
+}
+h1 {
+    font-size: 35px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color:cornsilk;
+}
+.column {
+    float: left;
+    width: 30%;
+    padding: 0 20px;
+}
+.row{
+    margin: 0 -5px;
+}
