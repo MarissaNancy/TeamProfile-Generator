@@ -1,17 +1,17 @@
 //require
+//fs is for writing the file
 const fs = require('fs');
+//inquirer so that it will ask questions 
 const inquirer = require('inquirer');
-const path = require('path')
-const Employees = require('./lib/employees');
+// we need these constructors
 const Engineer = require('./lib/engineer');
 const Manager = require('./lib/manager');
 const Intern = require('./lib/intern');
-const { createHistogram } = require('perf_hooks');
 
-var team = [];
+const team = [];
 
+//change to function and add .then promise
 
-//async helps write promise based code like if it was synch but doesnt block execution thread
 async function promptUser (){
     const { name, id, email, office } = await inquirer.prompt([
         //
@@ -40,15 +40,7 @@ async function promptUser (){
     const manager = new Manager (name, id, email, office)
     team.push(manager);
     creatTeam();
-    //employee concstructor that will grab position and will prompt questions based off of that
-    // this.employees = new Employees(name, id, email, position);
-    // if (this.employees.position === 'Engineer') {
-    //     promptEngineer(this.employees);
-    // } else if (this.employees.position === 'Manager') {
-    //     promptManager(this.employees);
-    // } else if (this.employees.position === 'Intern') {
-    //     promptIntern(this.employees);
-    // }
+    
 };
 
 function creatTeam() {
@@ -65,8 +57,8 @@ function creatTeam() {
                 promptEngineer();
                 break;
               case "Intern":
-                    promptIntern();
-                    break;
+                promptIntern();
+                break;
             default:
                 // this should be a function that renders you team in HTML
         }
@@ -81,6 +73,21 @@ promptEngineer = async (employees) => {
             type: 'input',
             message: 'What is your github username?',
             name: 'github',
+        },
+        {
+            type: 'input',
+            message: 'What is your email?',
+            name: 'email',
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is your name?'
+        },
+        {
+            type: 'input',
+            message: 'What is your id?',
+            name: 'id',
         }
         //add missing questions here
     ])
@@ -88,7 +95,7 @@ promptEngineer = async (employees) => {
         employees.name,
         employees.id,
         employees.email,
-        employees.position,
+        // employees.position,
         github
     );
     console.log(this.engineer);
@@ -107,7 +114,7 @@ promptManager = async (employees) => {
         employees.name,
         employees.id,
         employees.email,
-        employees.position,
+        // employees.position,
         office
     );
     console.log(this.manager);
@@ -119,13 +126,30 @@ promptIntern = async (employees) => {
             type: 'input',
             message: 'What is your school?',
             name: 'school',
-        }//add questions here 
+        },
+        {
+            type: 'input',
+            name: 'name',
+            message: 'What is your name?'
+        },
+        {
+            type: 'input',
+            message: 'What is your id?',
+            name: 'id',
+        },
+        {
+            type: 'input',
+            message: 'What is your email?',
+            name: 'email',
+        }
+        //add questions here
+        
     ])
     this.intern = new Intern(
         employees.name,
         employees.id,
         employees.email,
-        employees.position,
+        // employees.position,
         school
     );
     console.log(this.intern);
