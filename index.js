@@ -1,6 +1,8 @@
-//require
+//require files we will be needing 
+
 //fs is for writing the file
 const fs = require('fs');
+
 //inquirer so that it will ask questions 
 const inquirer = require('inquirer');
 // we need these constructors
@@ -10,13 +12,13 @@ const Intern = require('./lib/intern');
 
 const team = [];
 
+//function to start questions and start to generate html
 function init() {
     startGenhtml();
     addMember();
 }
 
-//change to function and add .then promise
-
+//this function handles the questions that the user will be prompted with
 function addMember(){
     inquirer.prompt([{
         //
@@ -40,6 +42,10 @@ function addMember(){
             message: "What is team member's email?",
             name: 'email',
         }])
+        //after these series of question are ran .then allows this code to be exectued 
+        //IF Engineer is the position it will ask for github username
+        //ELSE if position is set to manager it will ask for office number
+        //else it will ask for school number since Intern is the only position left 
     .then(function({name, position, id, email}) {
         let positionInfo = '';
         if (position === 'Engineer'){
@@ -63,6 +69,8 @@ function addMember(){
             ],
             name:'moreMembers'
         }])
+        //after being asked if they want to add more members this .then will allow more members to be added 
+        //and sets if else statements that will allow member to be constructed
         .then(function({positionInfo, moreMembers}) {
             let newMember;
             if ( position === 'Engineer') { 
@@ -72,8 +80,11 @@ function addMember(){
             } else {
                 newMember = new Manager (name, id, email, positionInfo);
             }
+            //pushes the newMember into team
             team.push(newMember);
+            //the addhtml will take in the parameter newMmeber
             addHtml(newMember)
+            //this .then allows user to add more members else it will run the function finishHTML
             .then(function() {
                 if (moreMembers === 'yes') {
                     addMember();
@@ -87,6 +98,7 @@ function addMember(){
 
 };
 
+//this function starts to generates html so adding in the top of html without any user input yet
 function startGenhtml(){
     const html = `<!DOCTYPE html>
     <html lang="en">
@@ -114,16 +126,19 @@ function startGenhtml(){
         }
     });
     console.log('start');
-}
+}//fs writes to the file sets the path the type of file and if there is an error it will console log it
 
+//this function adds the HTML with the member parameter and returns new promise 
 function addHtml(member){
     return new Promise(function(resolve, reject) {
+        //will allow the methods to be grabbed for the member and set them equal to a const
         const name = member.getName();
         const position = member.getPosition();
         const id = member.getId();
         const email = member.getEmail();
         let data = "";
 
+        //this is saying if position is Engineer it will grab the members github and the data will add this template code and Add it to html
         if (position === 'Engineer'){
             const gitHub = member.getGithub();
             data = `<div class="col-6">
@@ -136,6 +151,7 @@ function addHtml(member){
             </ul>
             </div>
         </div>`;
+        //this is saying if position is Intern it will grab the members school and the data will add this template code and Add it to html
         } else if (position === 'Intern'){
             const school = member.getSchool();
             data = `<div class="col-6">
@@ -149,6 +165,7 @@ function addHtml(member){
             </div>
         </div>`;
         } else {
+        ////this is saying else any other position it will grab the members office number data will add this to the letDATA
             const officePhone = member.getOfficeNumber();
             data = `<div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
@@ -161,7 +178,7 @@ function addHtml(member){
             </div>
         </div>`
         }
-        console.log('new team member added');
+        // console.log('new team member added');
         fs.appendFile("./dist/log.html", data, function (err) {
             if (err) {
                 return reject(err);
@@ -170,14 +187,14 @@ function addHtml(member){
     });
 });
 }
-
+//this is set to finsish the HTML so that if a user does not want to add anymore members it will finsih the html and close it 
 function finishHtml() {
     const html = ` </div>
     </div>
     
 </body>
 </html>`;
-
+//this appends to the file log.html 
     fs.appendFile("./dist/log.html", html, function (err) {
         if (err) {
             console.log(err);
@@ -186,18 +203,5 @@ function finishHtml() {
     console.log("end");
 }
 
+//this calls the function init which starts the series of questions and starts to generate HTML
 init();
-
-// promptUser();
-
-// function writeToFile(filename, data) {
-//     return fs.writeFileSync(path.join(process.cwd(), filename), data)
-// }
-
-//  {
-//     inquirer.prompt(questions).then((responses)=>{
-//         writeToFile('index.html', generateHTML({...responses}))
-//     })
-// }
-
-//init();

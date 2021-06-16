@@ -33,5 +33,8 @@ Then the user exits the application, and the HTML is generated
 
 ## Mock up
 ![Here is what my generated page looks like](./webapp.png)
+
+Here is the video that runs my test 
+https://drive.google.com/file/d/1vDCW_rSbXLj0pheuv0cPcxGdRPJhKhF3/view?usp=sharing
+and the series of question for user
 https://drive.google.com/file/d/1mB_ZTAgOuwhhqdV2ubfyGnukZoh3G__u/view?usp=sharing
-//video goes here
