@@ -1,23 +1,25 @@
 *{
     box-sizing: border-box;
 }
+/*styles the header with background color and adds padding*/
 header {
     padding: 10px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
     background-color: rgb(101, 70, 129);
-}
+}/*Gives text style font,size, color and aligns text in the middle */
 h1 {
     font-size: 35px;
     font-family: Georgia, 'Times New Roman', Times, serif;
     text-align: center;
     color:cornsilk;
 }
+/*Adds width and padding for columns*/
 .column {
     width: 30%;
     padding: 0 20px;
 }
+/*Gets row to display flex and spaces evenly*/
 .row{
-    margin: 0 -5px;
+    /* margin: 0 -5px; */
     display: flex;
     justify-content: space-evenly;
 }
