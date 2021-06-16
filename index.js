@@ -22,7 +22,7 @@ function addMember(){
         //
             type: 'input',
             name: 'name',
-            message: "What is the team member's?"
+            message: "What is the team member's name?"
         },
         {
             type: "list",

@@ -13,10 +13,11 @@ h1 {
     color:cornsilk;
 }
 .column {
-    float: left;
     width: 30%;
     padding: 0 20px;
 }
 .row{
     margin: 0 -5px;
+    display: flex;
+    justify-content: space-evenly;
 }

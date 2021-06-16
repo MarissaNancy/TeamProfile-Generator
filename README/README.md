@@ -7,7 +7,10 @@ For this weeks homework we will be building a Node.js application that takes in 
 A manager wants to generate a web page that displays their team's basic info so that the manager can have quick access to their employees emails and Github profiles.
 
 ## Directions 
-//put directions??
+Upong opening gitbash terminal type in the command 
+'node index.js'
+to run the series of questions so you can manage your team!
+Once the user answers the series of questions their team will be generated to a HTML page
 
 ## Acceptance Criteria 
 Given a command-line application accepts user input
@@ -29,4 +32,6 @@ When user decides to finish building their team
 Then the user exits the application, and the HTML is generated
 
 ## Mock up
+![Here is what my generated page looks like](./webapp.png)
+https://drive.google.com/file/d/1mB_ZTAgOuwhhqdV2ubfyGnukZoh3G__u/view?usp=sharing
 //video goes here
